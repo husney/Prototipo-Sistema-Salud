@@ -1,0 +1,25 @@
+/*Font*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,400;1,500;1,700&display=swap');
+
+:root{
+    --c-blue: #38ecdd;
+    --c-black: #131516;
+    --c-yellow: #fadf75;
+    --c-purple: #907ad6;
+    --c-red: #c14953;
+
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+    width: 100vw;  
+    height: 100vh;
+}
+
+.w-60{
+    width: 60%;
+}
+
+.bg-c-blue{
+    background-color: var(--c-blue);
+}
