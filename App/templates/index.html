@@ -3,5 +3,585 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+<!-- <img src="../static/images/banner.png" alt="Dashboard" class="m-0 p-0 w-100 h-100"> -->
+
+<div class="container" style="margin-top: 80px;">
+
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+            <button type="button" class="btn btn-sm  btn-c-purple" data-bs-toggle="modal" id="btnDatos"
+                data-bs-target="#datosPersonas">Mis datos</button>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-title">
+                    <h5 class="text-center h2 pt-1">Grupo personal</h5>
+                </div>
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-md-12 d-flex justify-content-end my-2">
+                            <button class="btn btn-sm btn-c-purple" data-bs-toggle="modal" id="btnAgregarPersona"
+                            data-bs-target="#datosPersonas">Agregar</button>
+                        </div>
+                    </div>
+                    
+                    <div id="personasContenedor" class="d-flex">
+
+                    </div>
+
+                        
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="datosPersonas" aria-labelledby="datosPersonas">
+    <!-- modal-xl modal-dialog-centered -->
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title center">Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+            </div>
+            <div class="modal-body">                
+                <div>
+                    <ul class="nav nav-pills mb-3" id="pill-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+
+                            <button class="nav-link active" id="tab-datos"      
+                                data-bs-toggle="pill"
+                                data-bs-target="#tabContentDatosBasicos" type="button" role="tab"
+                                aria-controls="tab-datos" aria-selected="true">
+                                Datos basicos
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+
+                            <button class="nav-link" id="tab-condiciones" 
+                                data-bs-toggle="pill"
+                                data-bs-target="#tabContentCondiciones" type="button" role="tab" aria-controls="tabContentCondiciones"
+                                aria-selected="false">
+                                Condiciones
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tabContentExamenes" type="button"
+                                role="tab" aria-controls="tabContentExamenes" aria-selected="false">
+                                Examenes
+                            </button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tabIndicadoresSalud" type="button" role="tab" aria-controls="tabIndicadoresSalud" aria-selected="false">
+                                Indicadores de salud
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <form id="globalForm">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="tabContentDatosBasicos" role="tabpanel" aria-labelledby="name">
+                            <div class="form">
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="primerNombre">Primer nombre</label>
+                                            <input type="text" id="primerNombre" placeholder="Primer nombre..."
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="segundoNombre">Segundo nombre</label>
+                                            <input type="text" id="segundoNombre" placeholder="Segundo nombre..."
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="primerApellido">Primer apellido</label>
+                                            <input type="text" id="primerApellido" placeholder="Primer apellido..."
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="segundoApellido">Segundo apellido</label>
+                                            <input type="text" id="segundoApellido" placeholder="Segundo apellido..."
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="lstTipoDocumento">Tipo de documento</label>
+                                            <select name="lstTipoDocumento" id="lstTipoDocumento" class="form-control">
+                                                <option value="1">CC</option>
+                                                <option value="2">TI</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="numeroDocumento">Número documento</label>
+                                            <input type="text" id="numeroDocumento" placeholder="Número de documento..."
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lstGenero">Genero</label>
+                                            <select name="lstGenero" id="lstGenero" class="form-control">
+                                                <option value="1">Masculino</option>
+                                                <option value="2">Femenino</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="edad">Edad</label>
+                                            <input type="number" id="edad" placeholder="Edad"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" placeholder="Email..." class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="celular">Celular</label>
+                                            <input type="text" id="celular" placeholder="Celular..." class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="row mt-3">
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <button class="btn btn-sm btn-success" id="btnActualizar">Actualizar</button>
+                                    </div>
+                                </div>
+            
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tabContentCondiciones" role="tabpanel" aria-labelledby="Condiciones">
     
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-pills mb-3" id="pill-tabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="tab-enfermedades"      
+                                                data-bs-toggle="pill"
+                                                data-bs-target="#tabEnfermedades" type="button" role="tab"
+                                                aria-controls="tab-enfermedades" aria-selected="true">
+                                                Enfermedades
+                                            </button>
+                                        </li>
+    
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="tab-accidentes" data-bs-toggle="pill" data-bs-target="#tabAccidentes" type="button" role="tab" aria-controls="tabEntrenamientos" aria-selected="false">
+                                                Accidentes
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+    
+                                <div class="tab-content" id="pillsSubIndicadoresSalud">
+                                    <div class="tab-pane fade show active" id="tabEnfermedades" role="tabpanel" aria-labelledby="Enfermedades">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="lstInconvenientesSalud">Enfermedad</label>
+                                                    <select name="lstInconvenientesSalud" id="lstInconvenientesSalud" class="form-control">
+                                                        <option value="0">Seleccionar...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label for="fechaReporte">Fecha diagnóstico</label>
+                                                    <input type="date" id="fechaReporte" class="form-control">
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="enTratamientoEnfermedad">En tratamiento</label>
+                                                    <select name="enTratamiento" id="enTratamientoEnfermedad" class="form-control">
+                                                        <option value="0">Seleccionar</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="2">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+    
+                                        <div class="row mt-2">
+                                            <div class="col-md-12 d-flex justify-content-end">
+                                                <button type="button" class="btn btn-sm btn-success" id="btnRegistrarEnfermedad">Agregar</button>
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="container">
+                                            <div class="row mt-2">
+                                                <div class="col-md-12">
+                                                    <table id="tblCondiciones" class="table table-hover w-100">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col" class="d-none"></th>
+                                                                <th scope="col">Enfermedad</th>
+                                                                <th scope="col" class="text-nowrap">Fecha reportada</th>
+                                                                <th scope="col">Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+    
+                                    <div class="tab-pane fade" id="tabAccidentes" role="tabpanel" aria-labelledby="Accidentes">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="descripcionAccidente">Descripción</label>
+                                                    <textarea name="descripcionAccidente" id="descripcionAccidente" cols="10" rows="3" style="resize: none;" class="form-control"></textarea>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+    
+                                        <div class="row mt-2">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label for="lugarAccidente">Lugar</label>
+                                                    <input type="text" id="lugarAccidente" class="form-control">
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="enTratamientoAccidente">En tratamiento</label>
+                                                    <select name="enTratamientoAccidente" id="enTratamientoAccidente" class="form-control">
+                                                        <option value="0">Seleccionar</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="2">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+    
+                                        <div class="row mt-2">
+                                            <div class="col-md-12 d-flex justify-content-end">
+                                                <button type="button" id="btnAgregarAccidente" class="btn btn-sm btn-success">Agregar</button>
+                                            </div>
+                                        </div>
+    
+                                        <div class="row mt-2">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover w-100" id="tblAccidentes">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col" class="d-none"></th>
+                                                                        <th scope="col">Descripcion</th>
+                                                                        <th scope="col">Lugar</th>
+                                                                        <th scope="col">Estado</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+    
+                            
+    
+                        </div>
+                        
+                        <div class="tab-pane fade" id="tabContentExamenes" role="tabpanel" aria-labelledby="Examenes">
+    
+                            <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="tipoExamen">Tipo de examen</label>
+                                        <select name="tipoExamen" id="tipoExamen" class="form-control">
+                                            <option value="0">Seleccionar...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+    
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Información del examen</label>
+                                        <textarea name="descripcionExamen" id="descripcionExamen" cols="30" rows="5" style="resize: none;" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div class="from-group">
+                                        <label for="imagenExamen">Adjuntos (png | jpg)</label>
+                                        <input type="file" accept="image/png, image/jepg" id="imagenExamen" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fechaExamen">Fecha examen</label>
+                                        <input type="date" id="fechaExamen" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fechaResultados">Fecha resultados</label>
+                                        <input type="date" id="fechaResultados" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row mt-3">
+                                <div class="col-md-12 d-flex justify-content-end">
+                                    <button id="btnAgregarExamen" class="btn btn-sm btn-success">Agregar</button>
+                                </div>
+                            </div>
+        
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div class="container">
+                                        <hr>
+                                        <caption>Informacion de examenes</caption>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover w-100" id="tblResultadosExamenes">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" class="d-none"></th>                                                    
+                                                        <th scope="col">Descripcion</th>
+                                                        <th scope="col" class="text-nowrap">Fecha examen</th>
+                                                        <th scope="col" class="text-nowrap">Fecha resultados</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+    
+                        <div class="tab-pane fade" id="tabIndicadoresSalud" role="tabpanel"
+                        aria-labelledby="Indicadores de salud">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="saturacionOxigeno">Saturación de oxígeno</label>
+                                        <input type="number" max="100" min="0" name="saturacionOximeno" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-pills mb-3" id="pill-tabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="tab-vacunas"      
+                                                data-bs-toggle="pill"
+                                                data-bs-target="#tabVacunas" type="button" role="tab"
+                                                aria-controls="tab-vacunas" aria-selected="true">
+                                                Vacunas
+                                            </button>
+                                        </li>
+    
+                                        <!-- <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="tab-entrenamientos" data-bs-toggle="pill" data-bs-target="#tabEntrenamientos" type="button" role="tab" aria-controls="tabEntrenamientos" aria-selected="false">
+                                                Entrenamientos
+                                            </button>
+                                        </li> -->
+                                    </ul>
+    
+                                    <div class="tab-content" id="pillsSubIndicadoresSalud">
+                                        <div class="tab-pane fade show active" id="tabVacunas" role="tabpanel" aria-labelledby="Vacunas">
+    
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label for="tipoVacuna">Vacuna</label>
+                                                        <select name="tipoVacuna" id="tipoVacuna" class="form-control">
+                                                            <option value="0">Seleccionar...</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="fechaVacuna">Fecha</label>
+                                                        <input type="date" id="fechaVacuna" class="form-control"> 
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mt-2">
+                                                <div class="col-md-12 d-flex justify-content-end">
+                                                    <button type="button" class="btn btn-sm btn-success" id="btnAgregarVacuna">Agregar</button>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mt-3">
+                                                <div class="col-md-12">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <caption>Vacunas</caption>
+                                                                <table class="table table-hover w-100" id="tblVacunas">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col" class="d-none"></th>
+                                                                            <th scope="col">Nombre</th>
+                                                                            <th scope="col">Fecha aplicación</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="tab-pane fade" id="tabEntrenamientos" role="tabpanel" aria-labelledby="Entrenamientos">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="descripcion">Descripción</label>
+                                                        <input type="text" id="descripcion" class="form-control">
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+    
+                                            <div class="row mt-2">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="lugarEntrenamiento">Lugar</label>
+                                                        <input type="text" id="lugarEntrenamiento" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mt-2">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="tiempoEntrenamiento">Tiempo</label>
+                                                        <input type="number" id="tiempoEntrenamiento" class="form-control" placeholder="Minutos">
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="distanciaRecorrida">Distancia recorida (si aplica)</label>
+                                                        <input type="number" id="distanciaRecorrida" class="form-control" placeholder="Kilometros">
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mt-2">
+                                                <div class="col-md-12 d-flex justify-content-end">
+                                                    <button type="button" id="btnAgregarEntrenamiento" class="btn btn-sm btn-success">Agregar</button>
+                                                </div>
+                                            </div>
+    
+                                            <div class="row mt-2">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-hover w-100" id="tblEntrenamientos">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col" class="d-none"></th>
+                                                                            <th scope="col">Lugar</th>
+                                                                            <th scope="col">Tiempo/m</th>
+                                                                            <th scope="col">Descripcion</th>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                  
+                        
+                    
+                        
+                    </div>
+    
+                </form>
+
+
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="../static/js/dashboard.js"></script>
+
 {% endblock %}

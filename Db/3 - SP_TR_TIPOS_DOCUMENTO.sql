@@ -1,0 +1,97 @@
+DROP PROCEDURE IF EXISTS STP_TR_TIPOS_DOCUMENTO
+GO
+
+CREATE PROCEDURE STP_TR_TIPOS_DOCUMENTO(
+	@ID INT = NULL,
+	@CODIGO VARCHAR(50) = NULL,
+	@DESCRIPCION VARCHAR(100) = NULL,
+	@OPERACION TINYINT = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+---------------------
+-- INSERTAR
+---------------------
+	IF @OPERACION = 0
+	BEGIN
+		
+		INSERT INTO
+			TR_TIPOS_DOCUMENTO
+		(
+			CODIGO,
+			DESCRIPCION
+		)
+		VALUES
+		(
+			@CODIGO,
+			@DESCRIPCION
+		)
+
+	END
+
+--------------------
+-- ACTUALIZAR
+--------------------
+	IF @OPERACION = 1
+	BEGIN
+		
+		UPDATE
+			TR_TIPOS_DOCUMENTO
+		SET 
+			CODIGO = @CODIGO,
+			DESCRIPCION = @DESCRIPCION
+		WHERE
+			ID = @ID
+	END
+
+
+--------------------
+-- ELIMINAR
+--------------------
+	IF @OPERACION = 2
+	BEGIN
+		
+		DELETE FROM
+			TR_TIPOS_DOCUMENTO
+		WHERE 
+			ID = @ID
+
+	END
+
+--------------------
+-- SELECCIONAR UNO
+--------------------
+	
+	IF @OPERACION = 3
+	BEGIN
+		
+		SELECT
+			ID,
+			CODIGO,
+			DESCRIPCION
+		FROM 
+			TR_TIPOS_DOCUMENTO
+		WHERE 
+			ID = @ID
+
+	END
+
+---------------------
+-- SELECCIONAR TODOS
+---------------------
+
+	IF @OPERACION = 4
+	BEGIN
+		
+		SELECT
+			ID,
+			CODIGO,
+			DESCRIPCION
+		FROM 
+			TR_TIPOS_DOCUMENTO
+
+	END
+
+END

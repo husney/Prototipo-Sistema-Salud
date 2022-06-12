@@ -4,31 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap-5.2.0/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap-5.2.0/css/bootstrap.min.css')}}">    
     <link rel="stylesheet" href="{{url_for('static', filename='fontawesome/css/all.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='fontawesome/css/fontawesome.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='dataTable/datatables.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='dataTable/DataTables/css/dataTables.bootstrap5.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='fontawesome/css/fontawesome.min.css')}}">    
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <link rel="shortcut icon" href="{{url_for('static', filename='images/ico.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{url_for('static', filename='dataTables/DataTables/css/dataTables.bootstrap5.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='dataTables/datatables.min.css')}}">    
+    <link rel="stylesheet" href="{{url_for('static', filename='sweetAlert/dist/sweetalert2.min.css')}}">    
+    <link rel="stylesheet" href="{{url_for('static', filename='select2/dist/css/select2.min.css')}}">
+    
     {% block head %} {% endblock %}    
     
     <title>{% block title%}{% endblock %}</title>
 </head>
 <body>
-    <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='dataTable/jQuery-3.6.0/jquery-3.6.0.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='dataTable/datatables.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='dataTable/DataTables/js/dataTables.bootstrap5.min.js')}}"></script>
 
-    <div class="container">
-        {%block body %} {% endblock %}
-    </div>
+    {% include 'nav.html' %}
     
-    <script type="text/javascript" src="{{url_for('static', filename='bootstrap-5.2.0/js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static', filename='fontawesome/js/all.js')}}"></script>    
-
-    {% block scripts %} {% endblock %}
-    <!-- <script type="text/javascript" src="{{url_for('static', filename='fontawesome/js/fontaweasome.js')}}"></script> -->
+    
+    <script type="text/javascript" src="{{url_for('static', filename='dataTables/jQuery-3.6.0/jquery-3.6.0.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='bootstrap-5.2.0/js/bootstrap.min.js')}}"></script>    
+    <script type="text/javascript" src="{{url_for('static', filename='dataTables/datatables.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='dataTables/DataTables/js/dataTables.bootstrap5.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='fontawesome/js/all.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='sweetAlert/dist/sweetalert2.min.js')}}"></script>    
+    <script type="text/javascript" src="{{url_for('static', filename='select2/dist/js/select2.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='moment.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+    
+    {%block body %} {% endblock %}
+    
+    {% block scripts %} {% endblock %}    
 </body>
 </html>

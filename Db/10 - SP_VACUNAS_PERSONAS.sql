@@ -1,0 +1,127 @@
+DROP PROCEDURE IF EXISTS STP_TM_VACUNAS_PERSONAS
+GO
+
+CREATE PROCEDURE STP_TM_VACUNAS_PERSONAS(
+	@ID INT = NULL,	
+	@FECHA DATETIME = NULL,
+	@ID_VACUNA INT = NULL,
+	@ID_PERSONA INT = NULL,	
+	@OPERACION TINYINT = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+---------------------
+-- INSERTAR
+---------------------
+	IF @OPERACION = 0
+	BEGIN
+		
+		INSERT INTO
+			TM_VACUNAS_PERSONAS
+		(
+			FECHA,
+			ID_VACUNA,
+			ID_PERSONA						
+		)
+		VALUES
+		(
+			@FECHA,
+			@ID_VACUNA,
+			@ID_PERSONA			
+		)
+
+		SELECT SCOPE_IDENTITY();
+
+	END
+
+--------------------
+-- ACTUALIZAR
+--------------------
+	IF @OPERACION = 1
+	BEGIN
+		
+		UPDATE
+			TM_VACUNAS_PERSONAS
+		SET 
+			FECHA = @FECHA,
+			ID_VACUNA = @ID_VACUNA,
+			ID_PERSONA = @ID_PERSONA			
+		WHERE
+			ID = @ID
+	END
+
+
+--------------------
+-- ELIMINAR
+--------------------
+	IF @OPERACION = 2
+	BEGIN
+		
+		DELETE FROM
+			TM_VACUNAS_PERSONAS
+		WHERE 
+			ID = @ID
+
+	END
+
+--------------------
+-- SELECCIONAR UNO
+--------------------
+	
+	IF @OPERACION = 3
+	BEGIN
+		
+		SELECT
+			ID,
+			FECHA,
+			ID_PERSONA,
+			ID_VACUNA			
+		FROM 
+			TM_VACUNAS_PERSONAS
+		WHERE 
+			ID = @ID
+
+	END
+
+---------------------
+-- SELECCIONAR TODOS
+---------------------
+
+	IF @OPERACION = 4
+	BEGIN
+		
+		SELECT
+			ID,
+			FECHA,
+			ID_PERSONA,
+			ID_VACUNA
+		FROM 
+			TM_VACUNAS_PERSONAS
+
+	END
+
+---------------------
+-- SELECCIONAR TODOS POR PERSONA
+---------------------
+
+	IF @OPERACION = 5
+	BEGIN
+		
+		SELECT
+			TM_VACUNAS_PERSONAS.ID,
+			TM_VACUNAS_PERSONAS.FECHA,
+			TM_VACUNAS_PERSONAS.ID_PERSONA,
+			TM_VACUNAS_PERSONAS.ID_VACUNA,
+			TP_VACUNAS.DESCRIPCION
+		FROM 
+			TM_VACUNAS_PERSONAS
+		INNER JOIN
+			TP_VACUNAS
+		ON
+			TP_VACUNAS.ID = TM_VACUNAS_PERSONAS.ID_VACUNA
+		WHERE
+			ID_PERSONA = @ID_PERSONA
+	END
+END

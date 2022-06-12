@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 flask = "*"
+pyodbc = "*"
+flask-restful = "*"
+requests = "*"
 
 [dev-packages]
 

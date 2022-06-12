@@ -1,0 +1,127 @@
+DROP PROCEDURE IF EXISTS STP_TM_USUARIOS;
+GO
+
+CREATE PROCEDURE STP_TM_USUARIOS
+(
+	@ID INT = NULL,
+	@NOMBRE VARCHAR(100) = NULL,
+	@PASSWORD VARCHAR(100) = NULL,
+	@EMAIL VARCHAR(100) = NULL,
+	@OPERACION TINYINT = NULL
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+
+-------------------
+-- INSERTAR
+-------------------
+	IF @OPERACION = 0
+	BEGIN
+		
+		INSERT INTO 
+			TM_USUARIOS
+		(
+			NOMBRE,
+			PASSWORD,
+			EMAIL
+		)
+		VALUES
+		(
+			@NOMBRE,
+			@PASSWORD,
+			@EMAIL
+		);
+		
+		SELECT SCOPE_IDENTITY();
+	END
+
+----------------------
+--	ACTUALIZAR
+----------------------
+	IF @OPERACION = 1
+	BEGIN
+		
+		UPDATE
+			TM_USUARIOS
+		SET
+			NOMBRE = @NOMBRE,
+			PASSWORD = @PASSWORD,
+			EMAIL = @EMAIL
+		WHERE
+			ID = @ID;
+
+		RETURN 1;
+	END
+
+----------------------
+--	ELIMINAR
+	IF @OPERACION = 2
+	BEGIN
+		
+		DELETE FROM
+			TM_USUARIOS
+		WHERE
+			ID = @ID;
+
+		RETURN 1;
+
+	END
+
+------------------
+-- SELECCIONAR UNO
+------------------
+	IF @OPERACION = 3
+	BEGIN
+		
+		SELECT
+			ID,
+			NOMBRE,
+			PASSWORD,
+			EMAIL,
+			ULTIMA_MODIFICACION
+		FROM
+			TM_USUARIOS
+		WHERE
+			ID = @ID;
+
+	END
+
+---------------------
+--	SELECCIONAR TODOS
+---------------------
+	IF @OPERACION = 4
+	BEGIN
+
+		SELECT
+			ID,
+			NOMBRE,
+			PASSWORD,
+			EMAIL,
+			ULTIMA_MODIFICACION
+		FROM
+			TM_USUARIOS
+	END
+
+---------------------
+-- VALIDAR USUARIO
+---------------------
+	IF @OPERACION = 5
+	BEGIN
+		
+		SELECT TOP 1
+			ID,
+			NOMBRE,
+			PASSWORD,
+			EMAIL,
+			ULTIMA_MODIFICACION
+		FROM 
+			TM_USUARIOS
+		WHERE
+			NOMBRE = @NOMBRE
+		AND
+			PASSWORD = @PASSWORD
+
+	END
+
+END

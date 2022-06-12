@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='fontawesome/css/all.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='fontawesome/css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='sweetAlert/dist/sweetalert2.min.css')}}">
     <link rel="shortcut icon" href="{{url_for('static', filename='images/ico.png')}}" type="image/x-icon">
     <title>Login</title>
 </head>
@@ -26,10 +27,10 @@
                         </div>
                     </div>
                     <div class="card-content p-2">
-                        <div class="form">
+                        <form class="form" id="formLogin">
                             
                             <div class="row">
-                                <div class="col-md-12 d-flex">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="user">Usuario</label>
                                         <input type="text" id="user" placeholder="Usuario..." class="form-control d-inline">
@@ -48,7 +49,7 @@
 
                             <div class="row mt-2">
                                 <div class="col-md-12 d-flex justify-content-center">
-                                    <button class="btn btn-sm btn-primary me-2">Ingresar</button>
+                                    <button class="btn btn-sm btn-primary me-2" id="btnIngresar">Ingresar</button>
 
                                     <button class="btn btn-sm btn-primary"
                                     data-bs-toggle="modal"  data-bs-target="#modalRegistro"
@@ -56,7 +57,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -65,7 +66,7 @@
 
 
     <div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="modalRegistro">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title center">Registro</h5>
@@ -76,8 +77,8 @@
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" id="nombre" placeholder="Nombre..." class="form-control">
+                                    <label for="nombre">Nombre de usuario</label>
+                                    <input type="text" id="nombre" placeholder="Nombre de usuario..." class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -111,7 +112,7 @@
 
                         <div class="row mt-3">
                             <div class="col-md-12 d-flex justify-content-center">
-                                <button class="btn btn-sm btn-success">Registrar</button>
+                                <button class="btn btn-sm btn-success" id="btnRegistro" >Registrar</button>
                             </div>
                         </div>
 
@@ -122,7 +123,11 @@
     </div>
 
     <script type="text/javascript" src="{{url_for('static', filename='bootstrap-5.2.0/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='sweetAlert/dist/sweetalert2.min.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='fontawesome/js/all.js')}}"></script>    
-    <script type="text/javascript" src="{{url_for('static', filename='js/login.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
+    <script type="module" src="{{url_for('static', filename='js/login.js')}}"></script>
+    
+    
 </body>
 </html>

@@ -16,10 +16,62 @@ body{
     height: 100vh;
 }
 
+body,
+.container{
+    overflow-y: hidden;
+}
+
 .w-60{
     width: 60%;
 }
 
 .bg-c-blue{
     background-color: var(--c-blue);
+}
+
+.bg-c-purple{
+    background-color: var(--c-purple);
+}
+
+.text-interactive{
+    font-size: 1.2rem;
+}
+
+.c-active{
+    background: var(--c-yellow);
+}
+
+.c-active-sensor li a:hover,
+.btn.c-active:hover{
+    background-color: var(--c-yellow);
+    opacity: .9;
+    transition: background-color .2s ease-in-out;
+}
+
+.btn-c-purple{
+    background-color: var(--c-purple);
+}
+
+button.btn-c-purple:hover{
+    background-color: var(--c-purple);
+    opacity: .9;
+    transition: background-color .2s ease-in-out;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: grey;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(95, 94, 94);
 }
